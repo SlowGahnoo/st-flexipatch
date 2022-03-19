@@ -5,12 +5,15 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = {
+	"Uw Ttyp0:pixelsize=16:antialias=false:autohint=true"
+};
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+	"Hack Nerd Font:pixelsize=12:antialias=false:autohint=true",
+	"NotoColorEmoji:pixelsize=14:antialias=true:autohint=true",
+	"Kochi Gothic:pixelsize=14:antialias=false:autohint=true",
 };
 #endif // FONT2_PATCH
 
@@ -114,8 +117,8 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
-const int boxdraw_bold = 0;
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
 const int boxdraw_braille = 0;
@@ -160,36 +163,36 @@ float alphaUnfocused = 0.6;
 #endif // ALPHA_PATCH
 
 /* Terminal colors (16 first used in escape sequence) */
+
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+  /* 8 normal colors */
+  "#000000", /* black   */
+  "#ff5555", /* red     */
+  "#50fa7b", /* green   */
+  "#f1fa8c", /* yellow  */
+  "#bd93f9", /* blue    */
+  "#ff79c6", /* magenta */
+  "#8be9fd", /* cyan    */
+  "#bbbbbb", /* white   */
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+  /* 8 bright colors */
+  "#44475a", /* black   */
+  "#ff5555", /* red     */
+  "#50fa7b", /* green   */
+  "#f1fa8c", /* yellow  */
+  "#bd93f9", /* blue    */
+  "#ff79c6", /* magenta */
+  "#8be9fd", /* cyan    */
+  "#ffffff", /* white   */
 
-	[255] = 0,
+  [255] = 0,
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#add8e6", /* 256 -> cursor */
-	"#555555", /* 257 -> rev cursor*/
-	"#000000", /* 258 -> bg */
-	"#e5e5e5", /* 259 -> fg */
+  /* special colors */
+  "#add8e6", /* 256 -> cursor */
+  "#555555", /* 257 -> rev cursor*/
+  "#282a36", /* background */
+  "#f8f8f2", /* foreground */
 };
-
 
 /*
  * Default colors (colorname index)
